@@ -4,9 +4,10 @@ import Frameworks.AbstractComponent.AbstractComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignIn extends AbstractComponent {
-    WebDriver driver;
+    private WebDriver driver;
     public SignIn(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -18,12 +19,32 @@ public class SignIn extends AbstractComponent {
     @FindBy(xpath = "(//button[@id='send2'])[2]")
     WebElement SignInBtnElement;
 
+    @FindBy(id = "email-error")
+    WebElement emailErrorElement;
+    @FindBy(css = ".message-error")
+    WebElement passwordErrorElement;
+
+    @FindBy(css=".message-success.success.message")
+    WebElement changePasswordSuccessMessageElement;
+
     public void signIn(String email, String password) {
+        exWait.until(ExpectedConditions.visibilityOf(emailElement));
+        emailElement.clear();
         emailElement.sendKeys(email);
         passwordElement.sendKeys(password);
         SignInBtnElement.click();
     }
-    public void goToLogin(){
-        driver.get("https://demo-m2.bird.eu/customer/account/login");
+    public boolean InvalidEmailErrorMessage(){
+        exWait.until(ExpectedConditions.visibilityOf(emailErrorElement));
+        return emailErrorElement.isDisplayed();
     }
+    public boolean InvalidPasswordErrorMessage(){
+        exWait.until(ExpectedConditions.visibilityOf(passwordErrorElement));
+        return passwordErrorElement.isDisplayed();
+    }
+    public boolean ChangePasswordSuccessMessage(){
+        exWait.until(ExpectedConditions.visibilityOf(changePasswordSuccessMessageElement));
+        return changePasswordSuccessMessageElement.isDisplayed();
+    }
+
 }

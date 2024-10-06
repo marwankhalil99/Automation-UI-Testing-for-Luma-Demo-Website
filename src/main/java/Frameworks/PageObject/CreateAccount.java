@@ -1,10 +1,11 @@
 package Frameworks.PageObject;
 
 import Frameworks.AbstractComponent.AbstractComponent;
+import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateAccount extends AbstractComponent {
     private WebDriver driver;
@@ -22,12 +23,15 @@ public class CreateAccount extends AbstractComponent {
     WebElement showPasswordChkBox;
     @FindBy(xpath="//div/button[contains(@class,'submit')]")
     WebElement createAccountBtn;
+    @FindBy(id="email_address-error")
+    WebElement emailErrorElement;
 
     public CreateAccount(WebDriver driver){
         super(driver);
         this.driver = driver;
     }
     public MyAccount createAccount(String fname , String lname , String email , String password){
+        exWait.until(ExpectedConditions.visibilityOf(firstName));
         firstName.sendKeys(fname);
         lastName.sendKeys(lname);
         emailAddress.sendKeys(email);
@@ -38,7 +42,8 @@ public class CreateAccount extends AbstractComponent {
         MyAccount myAccount = new MyAccount(driver);
         return myAccount;
     }
-    public void goTo(){
-        driver.get("https://demo-m2.bird.eu/customer/account/create/");
+
+    public Boolean validateErrorMessage(){
+        return emailErrorElement.isDisplayed();
     }
 }

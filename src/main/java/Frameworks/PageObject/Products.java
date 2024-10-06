@@ -44,7 +44,7 @@ public class Products extends AbstractComponent {
         WebElement prod = productsElement.stream().filter(s -> s.findElement(productNameLocator).getText().contains(name)).findFirst().orElse(null);
         return prod;
     }
-    public void addToCart(String productName , String color , String size) {
+    public void addToCart(String productName , String color , String size)  {
         WebElement prod = getProductByName(productName);
         prod.findElement(By.cssSelector("div[aria-label='"+color+"']")).click();
         prod.findElement(By.cssSelector("div[data-option-tooltip-value='"+size+"']")).click();

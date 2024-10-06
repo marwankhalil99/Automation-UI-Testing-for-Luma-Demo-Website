@@ -19,13 +19,27 @@ public class MyAccount extends AbstractComponent {
     }
     @FindBy(css = ".message-success")
     WebElement successMessage;
-//    @FindBy(xpath = "(//div[@class='box-content']/p)[1]")
-//    WebElement accountDetails;
+
+    @FindBy(className = "base")
+    WebElement myAccountElement;
+
+    @FindBy(css=".action.change-password")
+    WebElement changePasswordElement;
+
     public boolean validateSuccessMessage(){
         exWait.until(ExpectedConditions.visibilityOf(successMessage));
         return successMessage.isDisplayed();
     }
+    public boolean validateSignInSuccess(){
+        exWait.until(ExpectedConditions.visibilityOf(myAccountElement));
+        return myAccountElement.isDisplayed();
+    }
+    public boolean validateSignOutSuccess(){
+        exWait.until(ExpectedConditions.visibilityOf(myAccountElement));
+        return myAccountElement.isDisplayed();
+    }
 
-
-
+    public void changePasswordClick(){
+        exWait.until(ExpectedConditions.visibilityOf(changePasswordElement)).click();
+    }
 }
