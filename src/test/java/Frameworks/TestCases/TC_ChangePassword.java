@@ -25,7 +25,7 @@ public class TC_ChangePassword extends BaseTest {
         Assert.assertTrue(myAccount.validateSignInSuccess());
     }
     @Test
-    public void changePassword() throws InterruptedException {
+    public void changePassword()  {
         SignIn signIn = new SignIn(driver);
         homePage.goToMyAccount();
         MyAccount myAccount = new MyAccount(driver);

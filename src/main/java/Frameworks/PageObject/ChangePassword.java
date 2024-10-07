@@ -33,7 +33,7 @@ public class ChangePassword extends AbstractComponent {
     @FindBy(xpath = "(//button[@id='send2'])[2]")
     WebElement signInBtnElement;
 
-    public void changePassword(String currentPassword, String newPassword) throws InterruptedException {
+    public void changePassword(String currentPassword, String newPassword) {
         currentPasswordElement.sendKeys(currentPassword);
         newPasswordElement.sendKeys(newPassword);
         confirmPasswordElement.sendKeys(newPassword);

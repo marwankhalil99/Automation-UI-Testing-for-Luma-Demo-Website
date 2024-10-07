@@ -1,6 +1,7 @@
 package Frameworks.PageObject;
 
 import Frameworks.AbstractComponent.AbstractComponent;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -41,6 +42,16 @@ public class HomePage extends AbstractComponent {
     @FindBy(xpath = "(//a[contains(.,'My Account')])[1]")
     WebElement myAccountElement;
 
+    @FindBy(css = "a[class='action showcart']  span[class='counter qty']")
+    WebElement cartFlagElement;
+
+    @FindBy(xpath ="//a[@title='Remove item']")
+    WebElement deleteElement;
+    By deleteBy = By.xpath("//a[@title='Remove item']");
+
+    @FindBy(css=".action-primary.action-accept")
+    WebElement deleteConfirmElement;
+
     public void goToStartPoint(){
         driver.get("https://demo-m2.bird.eu");
     }
@@ -55,7 +66,9 @@ public class HomePage extends AbstractComponent {
         signInBtnElement.click();
     }
     public CheckOut_Shipping goToCheckOut(){
+        exWait.until(ExpectedConditions.visibilityOf(cartFlagElement));
         cartLink.click();
+        exWait.until(ExpectedConditions.elementToBeClickable(proceedToCheckOutElement));
         proceedToCheckOutElement.click();
         CheckOut_Shipping checkOutShipping = new CheckOut_Shipping(driver);
         return checkOutShipping;
@@ -71,5 +84,19 @@ public class HomePage extends AbstractComponent {
         dropDownElement.click();
         myAccountElement.click();
     }
-
+    public void deleteProducts() {
+        cartLink.click();
+        exWait.until(ExpectedConditions.visibilityOf(proceedToCheckOutElement));
+        cartProductsElements.stream().forEach(s->{
+            s.findElement(deleteBy).click();
+            exWait.until(ExpectedConditions.visibilityOf(deleteConfirmElement));
+            deleteConfirmElement.click();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        cartLink.click();
+    }
 }

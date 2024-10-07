@@ -6,18 +6,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
 public class Products extends AbstractComponent {
     WebDriver driver;
+    static int flagAddToCart = 1;
+    static int flagSuccessMessage = 1;
     public Products(WebDriver driver){
         super(driver);
         this.driver = driver;
     }
     @FindBy(css="div[data-bind='html: $parent.prepareMessageForHtml(message.text)']")
     WebElement messageElement;
+
+    By messageBy = By.cssSelector("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");
+
     @FindBy(css=".product-item")
     List<WebElement> productsElement;
 
@@ -40,7 +46,10 @@ public class Products extends AbstractComponent {
     }
 
     public WebElement getProductByName(String name) {
-        exWait.until(ExpectedConditions.visibilityOf(productsWaitElement));
+        if(flagAddToCart == 1) {
+            exWait.until(ExpectedConditions.visibilityOf(productsWaitElement));
+            flagAddToCart = 0;
+        }
         WebElement prod = productsElement.stream().filter(s -> s.findElement(productNameLocator).getText().contains(name)).findFirst().orElse(null);
         return prod;
     }
@@ -52,7 +61,12 @@ public class Products extends AbstractComponent {
         prod.findElement(addToCartElement).click();
     }
     public boolean addToCartSuccessMessage(String productName){
-        exWait.until(ExpectedConditions.visibilityOf(messageElement));
+        if(flagSuccessMessage == 1) {
+            exWait.until(ExpectedConditions.visibilityOf(messageElement));
+            flagSuccessMessage = 0;
+        }else{
+            exWait.until(ExpectedConditions.textToBePresentInElement(messageElement , productName));
+        }
         return messageElement.getText().contains("You added "+productName);
     }
 
