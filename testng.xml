@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="userStory">
+        <classes>
+<!--            <class name="Frameworks.TestCases.AppTest">-->
+<!--                <methods>-->
+<!--                    <include name="e2eTestWithSingleElementOnTheCart"/>-->
+<!--                    <include name="e2eTestWithTwoElementOnTheCart"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="Frameworks.TestCases.TC_CreateAccount">
+                <methods>
+                    <include name="createAccountWithValidData"/>
+                </methods>
+            </class>
+            <class name="Frameworks.TestCases.TC_SignIn">
+                <methods>
+                    <include name="signInWithValidData"/>
+                </methods>
+            </class>
+            <class name="Frameworks.TestCases.TC_AddToCart">
+                <methods>
+                    <include name="addToCart"/>
+                </methods>
+            </class>
+            <class name="Frameworks.TestCases.TC_CheckOut">
+                <methods>
+                    <include name="testCheckOut"/>
+                </methods>
+            </class>
+            <class name="Frameworks.TestCases.TC_SignOut">
+                <methods>
+                    <include name="testSignOut"/>
+                </methods>
+            </class>
+            <class name="Frameworks.TestCases.TC_ChangePassword">
+                <methods>
+                    <include name="changePassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="InvalidScenarios">
+        <classes>
+            <class name="Frameworks.TestCases.TC_CreateAccount">
+                <methods>
+                    <include name="createAccountWithInvalidEmailFormat"/>
+                </methods>
+            </class>
+            <class name="Frameworks.TestCases.TC_SignIn">
+                <methods>
+                    <include name="testLoginWithInvalidEmail"/>
+                    <include name="testLoginWithInvalidPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="AddMoreThanOneElementToCart">
+        <classes>
+            <class name="Frameworks.TestCases.TC_AddToCart">
+                <methods>
+                    <include name="addToCart2Products"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
