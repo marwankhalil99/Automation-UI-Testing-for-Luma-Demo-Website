@@ -22,8 +22,6 @@ public class Products extends AbstractComponent {
     @FindBy(css="div[data-bind='html: $parent.prepareMessageForHtml(message.text)']")
     WebElement messageElement;
 
-    By messageBy = By.cssSelector("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");
-
     @FindBy(css=".product-item")
     List<WebElement> productsElement;
 

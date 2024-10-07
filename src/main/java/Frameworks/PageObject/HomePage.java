@@ -52,10 +52,14 @@ public class HomePage extends AbstractComponent {
     @FindBy(css=".action-primary.action-accept")
     WebElement deleteConfirmElement;
 
+    @FindBy(css=".subtitle.empty")
+    WebElement emptyCartMessageElement;
+
     public void goToStartPoint(){
         driver.get("https://demo-m2.bird.eu");
     }
     public void createAccountClick(){
+        exWait.until(ExpectedConditions.elementToBeClickable(createAccountBtnElement));
         createAccountBtnElement.click();
     }
     public void goToHomePage(){
@@ -87,7 +91,7 @@ public class HomePage extends AbstractComponent {
     public void deleteProducts() {
         cartLink.click();
         exWait.until(ExpectedConditions.visibilityOf(proceedToCheckOutElement));
-        cartProductsElements.stream().forEach(s->{
+        cartProductsElements.forEach(s->{
             s.findElement(deleteBy).click();
             exWait.until(ExpectedConditions.visibilityOf(deleteConfirmElement));
             deleteConfirmElement.click();
@@ -98,5 +102,10 @@ public class HomePage extends AbstractComponent {
             }
         });
         cartLink.click();
+    }
+    public boolean isCartEmpty(){
+        cartLink.click();
+        exWait.until(ExpectedConditions.visibilityOf(emptyCartMessageElement));
+        return emptyCartMessageElement.isDisplayed();
     }
 }

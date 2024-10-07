@@ -16,10 +16,11 @@ public class TC_AddToCart extends BaseTest {
         signIn.signIn(email, password);
         homePage.goToHomePage();
     }
+
     @Test
     public void addToCart() {
         Products product = new Products(driver);
-        product.addToCart("Bruno Compete Hoodie","Blue","M");
+        product.addToCart("Bruno Compete Hoodie", "Blue", "M");
         Assert.assertTrue(product.addToCartSuccessMessage("Bruno Compete Hoodie"));
         Assert.assertTrue(homePage.validateCartContent("Bruno Compete Hoodie"));
     }
@@ -33,9 +34,4 @@ public class TC_AddToCart extends BaseTest {
         Assert.assertTrue(homePage.validateCartContent("Bruno Compete Hoodie"));
         Assert.assertTrue(homePage.validateCartContent("Stark Fundamental Hoodie"));
     }
-
-//    @AfterMethod
-//    public void clearCart() {
-//        homePage.deleteProducts();
-//    }
 }
