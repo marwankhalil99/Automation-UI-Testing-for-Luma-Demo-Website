@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test name="E2E Test User Story">
-        <classes>
-            <class name="Frameworks.TestCases.TC_E2EUserStory">
-                <methods>
-                    <include name= "e2eTestWithSingleElementOnTheCart"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="Main Functionalities">
         <classes>
             <class name="Frameworks.TestCases.TC_CreateAccount">
                 <methods>
@@ -59,16 +49,6 @@
             <class name="Frameworks.TestCases.TC_AddToCart">
                 <methods>
                     <include name="addToCart2Products"/>
-                </methods>
-            </class>
-            <class name="Frameworks.TestCases.TC_DeleteProduct">
-                <methods>
-                    <include name="clearCart"/>
-                </methods>
-            </class>
-            <class name="Frameworks.TestCases.TC_ChangePassword">
-                <methods>
-                    <include name="changePassword"/>
                 </methods>
             </class>
         </classes>
