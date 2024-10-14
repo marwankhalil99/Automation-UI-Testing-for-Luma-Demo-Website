@@ -11,7 +11,7 @@ import java.time.Duration;
 public class BaseTest {
     public static String fname = "Test";
     public static String lname = "user";
-    public static String email = "ussserrrrrrrerrsssssssssssssss@eexample.com";
+    public static String email = "ussserrrrrrrerrssssssssssssssss@eexample.com";
     public static String password = "Test123@";
     public static String changedPassword = "Test123!";
 

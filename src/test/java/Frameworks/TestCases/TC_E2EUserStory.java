@@ -11,7 +11,7 @@ public class TC_E2EUserStory extends BaseTest
     public void e2eTestWithSingleElementOnTheCart() {
         String fname = "test";
         String lname = "user";
-        String email = "usserssteeeessfsfssstt@domain.com";
+        String email = "usserssteeeeessfsfssstt@domain.com";
         String password = "Test123!";
         homePage.createAccountClick();
         CreateAccount createAccount = new CreateAccount(driver);
