@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ChangePassword extends AbstractComponent {
-    private WebDriver driver;
+     WebDriver driver;
     public ChangePassword(WebDriver driver) {
         super(driver);
         this.driver = driver;

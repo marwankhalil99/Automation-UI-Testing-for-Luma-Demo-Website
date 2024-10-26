@@ -11,7 +11,7 @@ public class TC_E2EUserStory extends BaseTest
     public void e2eTestWithSingleElementOnTheCart() {
         String fname = "test";
         String lname = "user";
-        String email = "usserssteeeeessfsfssstt@domain.com";
+        String email = "Testusers6@domain.co";
         String password = "Test123!";
         homePage.createAccountClick();
         CreateAccount createAccount = new CreateAccount(driver);
@@ -22,6 +22,10 @@ public class TC_E2EUserStory extends BaseTest
         product.addToCart("Bruno Compete Hoodie","Blue","M");
         Assert.assertTrue(product.addToCartSuccessMessage("Bruno Compete Hoodie"));
         Assert.assertTrue(homePage.validateCartContent("Bruno Compete Hoodie"));
+        homePage.deleteProducts();
+        product.addToCart("Stark Fundamental Hoodie","Blue","M");
+        Assert.assertTrue(product.addToCartSuccessMessage("Stark Fundamental Hoodie"));
+        Assert.assertTrue(homePage.validateCartContent("Stark Fundamental Hoodie"));
         CheckOut_Shipping checkOutShipping = homePage.goToCheckOut();
         CheckOut_Review checkOutReview = checkOutShipping.setShoppingAddress(fname, lname, "123 Main St", "United States", "Palau", "Los Angeles", "90001", "1234567890", "Table Rate");
         SuccessPage successPage = checkOutReview.setPaymentMethod(0);

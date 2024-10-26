@@ -3,6 +3,7 @@
 <suite name="All Test Suite">
     <test name="test">
         <classes>
+            <class name="Frameworks.TestCases.TC_E2EUserStory"></class>
             <class name="Frameworks.TestCases.TC_CreateAccount">
                 <methods>
                     <include name="createAccountWithValidData"/>
@@ -52,6 +53,11 @@
                     <include name="addToCart2Products"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+    <test name="ChangePassword">
+        <classes>
+            <class name="Frameworks.TestCases.TC_ChangePassword"/>
         </classes>
     </test>
 </suite>

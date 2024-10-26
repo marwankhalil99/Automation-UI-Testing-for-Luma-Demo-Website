@@ -67,7 +67,4 @@ public class Products extends AbstractComponent {
         }
         return messageElement.getText().contains("You added "+productName);
     }
-
-
-
 }
