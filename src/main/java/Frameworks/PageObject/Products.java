@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class Products extends AbstractComponent {
-    WebDriver driver;
     static int flagAddToCart = 1;
     static int flagSuccessMessage = 1;
     public Products(WebDriver driver){

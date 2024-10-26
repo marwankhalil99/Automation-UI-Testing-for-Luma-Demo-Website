@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateAccount extends AbstractComponent {
-    private WebDriver driver;
     @FindBy(id="firstname")
     WebElement firstName;
     @FindBy(id="lastname")

@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SuccessPage extends AbstractComponent {
-    private WebDriver driver;
     public SuccessPage(WebDriver driver){
         super(driver);
         this.driver = driver;

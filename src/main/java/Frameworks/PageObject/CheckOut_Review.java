@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class CheckOut_Review extends AbstractComponent {
-    private WebDriver driver;
     public CheckOut_Review(WebDriver driver) {
         super(driver);
         this.driver = driver;

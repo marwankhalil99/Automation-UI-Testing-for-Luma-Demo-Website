@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyAccount extends AbstractComponent {
-    private WebDriver driver;
     public MyAccount(WebDriver driver){
         super(driver);
         this.driver = driver;

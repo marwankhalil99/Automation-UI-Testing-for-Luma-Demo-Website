@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignIn extends AbstractComponent {
-    private WebDriver driver;
     public SignIn(WebDriver driver) {
         super(driver);
         this.driver = driver;

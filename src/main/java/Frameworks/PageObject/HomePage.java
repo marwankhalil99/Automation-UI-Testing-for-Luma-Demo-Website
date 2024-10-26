@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class HomePage extends AbstractComponent {
-    WebDriver driver;
     public HomePage(WebDriver driver){
         super(driver);
         this.driver = driver;

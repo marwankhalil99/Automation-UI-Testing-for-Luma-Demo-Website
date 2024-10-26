@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignOut extends AbstractComponent {
-    WebDriver driver;
     public SignOut (WebDriver driver) {
         super(driver);
         this.driver = driver;

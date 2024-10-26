@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class CheckOut_Shipping extends AbstractComponent {
-    private WebDriver driver;
     public CheckOut_Shipping(WebDriver driver){
         super(driver);
         this.driver = driver;
